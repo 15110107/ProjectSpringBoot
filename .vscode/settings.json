@@ -3,6 +3,9 @@
     "cSpell.words": [
         "datasources",
         "Hometest",
+        "javac",
+        "mapstruct",
         "springdemo"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
