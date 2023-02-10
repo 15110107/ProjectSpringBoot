@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.example.hometest.ResourceNotFoundException;
+import com.example.hometest.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
