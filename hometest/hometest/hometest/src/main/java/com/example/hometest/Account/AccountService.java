@@ -1,8 +1,6 @@
-package com.example.hometest;
+package com.example.hometest.Account;
 
 import java.util.List;
-
-import com.example.hometest.Account.Account;
 
 public interface AccountService {
     Account saveAccount(Account Account);

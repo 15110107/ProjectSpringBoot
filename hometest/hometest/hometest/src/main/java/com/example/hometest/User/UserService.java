@@ -1,8 +1,6 @@
-package com.example.hometest;
+package com.example.hometest.User;
 
 import java.util.List;
-
-import com.example.hometest.User.User;
 
 public interface UserService {
     User saveUser(User User);

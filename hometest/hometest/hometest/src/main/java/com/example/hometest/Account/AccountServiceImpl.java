@@ -1,11 +1,9 @@
-package com.example.hometest;
+package com.example.hometest.Account;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.example.hometest.Account.Account;
-import com.example.hometest.Account.AccountRepository;
+import com.example.hometest.ResourceNotFoundException;
 
 @Service
 public class AccountServiceImpl implements AccountService {

@@ -1,11 +1,9 @@
-package com.example.hometest;
+package com.example.hometest.User;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.example.hometest.User.User;
-import com.example.hometest.User.UserRepository;
+import com.example.hometest.ResourceNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService {

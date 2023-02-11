@@ -2,10 +2,12 @@ package com.example.hometest.User;
 
 import java.util.Objects;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class User {
-    private long UserId;
+    private @Id @GeneratedValue long UserId;
     private String FullName;
     private String Password;
     private String NotificationToken;

@@ -2,10 +2,12 @@ package com.example.hometest.Account;
 
 import java.util.Objects;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class Account {
-    private long UserId;
+    private @Id @GeneratedValue long UserId;
     private int AccountNumber;
     private double Balance;
 
