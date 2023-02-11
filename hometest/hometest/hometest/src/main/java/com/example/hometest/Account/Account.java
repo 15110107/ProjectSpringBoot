@@ -1,7 +1,9 @@
 package com.example.hometest.Account;
 
 import java.util.Objects;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Account {
     private long UserId;
     private int AccountNumber;
