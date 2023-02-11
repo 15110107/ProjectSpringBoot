@@ -5,7 +5,8 @@
         "Hometest",
         "javac",
         "mapstruct",
-        "springdemo"
+        "springdemo",
+        "Userid"
     ],
     "java.configuration.updateBuildConfiguration": "automatic"
 }
