@@ -1,9 +1,0 @@
-dn: ou=groups,dc=springframework,dc=org
-objectclass: top
-objectclass: organizationalUnit
-ou: groups
-
-dn ou=subgroups,ou=groups,dc=springframework,dc=org
-objectclass: top
-objectclass: organizationalUnit
-ou: subgroups
