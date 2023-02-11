@@ -24,16 +24,16 @@ public class UserController {
     @Autowired
     private ModelMapper modelMapper;
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
-    public UserController(UserService userService) {
+    public UserController(UserServiceImpl userServiceImpl) {
         super();
-        this.userService = userService;
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping
     public List<User> getAllUsers() {
-        return userService.getAllUsers()
+        return userServiceImpl.getAllUsers()
                 .stream()
                 .map(post -> modelMapper.map(post, User.class))
                 .collect(Collectors.toList());
@@ -41,7 +41,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserByUserId(@PathVariable(name = "id") Long id) {
-        User user = userService.getUserByUserId(id);
+        User user = userServiceImpl.getUserByUserId(id);
         // convert entity to DTO
         UserDto userResponse = modelMapper.map(user, UserDto.class);
         return ResponseEntity.ok().body(userResponse);
@@ -51,7 +51,7 @@ public class UserController {
     public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto) {
         // convert DTO to entity
         User userRequest = modelMapper.map(userDto, User.class);
-        User user = userService.saveUser(userRequest);
+        User user = userServiceImpl.saveUser(userRequest);
         // convert entity to DTO
         UserDto userResponse = modelMapper.map(user, UserDto.class);
         return new ResponseEntity<UserDto>(userResponse, HttpStatus.CREATED);
@@ -63,7 +63,7 @@ public class UserController {
     public ResponseEntity<UserDto> updateUser(@PathVariable long id, @RequestBody UserDto userDto) {
         // convert DTO to Entity
         User userRequest = modelMapper.map(userDto, User.class);
-        User user = userService.updateUser(userRequest, id);
+        User user = userServiceImpl.updateUser(userRequest, id);
         // entity to DTO
         UserDto userResponse = modelMapper.map(user, UserDto.class);
         return ResponseEntity.ok().body(userResponse);
@@ -71,7 +71,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable(name = "id") Long id) {
-        userService.deleteUser(id);
+        userServiceImpl.deleteUser(id);
         return new ResponseEntity<String>("User deleted successfully!.", HttpStatus.OK);
     }
 }
