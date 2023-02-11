@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.hometest.User.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/User")
 public class UserController {
     @Autowired
     private ModelMapper modelMapper;
@@ -33,55 +33,45 @@ public class UserController {
 
     @GetMapping
     public List<User> getAllUsers() {
-
-        return userService.getAllUsers().stream().map(post -> modelMapper.map(post, User.class))
+        return userService.getAllUsers()
+                .stream()
+                .map(post -> modelMapper.map(post, User.class))
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserByUserId(@PathVariable(name = "id") Long id) {
-        Post post = userService.getUserByUserId(id);
-
+    public ResponseEntity<UserDto> getUserByUserId(@PathVariable(name = "id") Long id) {
+        User user = userService.getUserByUserId(id);
         // convert entity to DTO
-        PostDto postResponse = modelMapper.map(post, PostDto.class);
-
-        return ResponseEntity.ok().body(postResponse);
+        UserDto userResponse = modelMapper.map(user, UserDto.class);
+        return ResponseEntity.ok().body(userResponse);
     }
 
     @PostMapping
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {
-
+    public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto) {
         // convert DTO to entity
-        Post postRequest = modelMapper.map(postDto, Post.class);
-
-        Post post = postService.createPost(postRequest);
-
+        User userRequest = modelMapper.map(userDto, User.class);
+        User user = userService.saveUser(userRequest);
         // convert entity to DTO
-        PostDto postResponse = modelMapper.map(post, PostDto.class);
-
-        return new ResponseEntity<PostDto>(postResponse, HttpStatus.CREATED);
+        UserDto userResponse = modelMapper.map(user, UserDto.class);
+        return new ResponseEntity<UserDto>(userResponse, HttpStatus.CREATED);
     }
 
     // change the request for DTO
     // change the response for DTO
     @PutMapping("/{id}")
-    public ResponseEntity<PostDto> updatePost(@PathVariable long id, @RequestBody PostDto postDto) {
-
+    public ResponseEntity<UserDto> updateUser(@PathVariable long id, @RequestBody UserDto userDto) {
         // convert DTO to Entity
-        Post postRequest = modelMapper.map(postDto, Post.class);
-
-        Post post = postService.updatePost(id, postRequest);
-
+        User userRequest = modelMapper.map(userDto, User.class);
+        User user = userService.updateUser(userRequest, id);
         // entity to DTO
-        PostDto postResponse = modelMapper.map(post, PostDto.class);
-
-        return ResponseEntity.ok().body(postResponse);
+        UserDto userResponse = modelMapper.map(user, UserDto.class);
+        return ResponseEntity.ok().body(userResponse);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deletePost(@PathVariable(name = "id") Long id) {
-        postService.deletePost(id);
-        ApiResponse apiResponse = new ApiResponse(Boolean.TRUE, "Post deleted successfully", HttpStatus.OK);
-        return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+    public ResponseEntity<String> deleteUser(@PathVariable(name = "id") Long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<String>("User deleted successfully!.", HttpStatus.OK);
     }
 }

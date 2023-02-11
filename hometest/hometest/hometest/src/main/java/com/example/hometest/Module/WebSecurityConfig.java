@@ -16,14 +16,11 @@ public class WebSecurityConfig {
 
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-                http
-                                .authorizeHttpRequests((requests) -> requests
-                                                .requestMatchers("/").permitAll()
-                                                .anyRequest().authenticated())
-                                .formLogin((form) -> form
-                                                .permitAll())
+                http.authorizeHttpRequests((requests) -> requests
+                                .requestMatchers("/").permitAll()
+                                .anyRequest().authenticated())
+                                .formLogin((form) -> form.permitAll())
                                 .logout((logout) -> logout.permitAll());
-
                 return http.build();
         }
 
@@ -34,7 +31,6 @@ public class WebSecurityConfig {
                                 .password("123456")
                                 .roles("USER")
                                 .build();
-
                 return new InMemoryUserDetailsManager(user);
         }
 }

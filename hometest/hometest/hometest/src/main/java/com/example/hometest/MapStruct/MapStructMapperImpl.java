@@ -15,13 +15,10 @@ public class MapStructMapperImpl implements MapStructMapper {
         if (account == null) {
             return null;
         }
-
         AccountDto accountDto = new AccountDto();
-
         accountDto.setUserId(account.getUserId());
         accountDto.setAccountNumber(account.getAccountNumber());
         accountDto.setBalance(account.getBalance());
-
         return accountDto;
     }
 
@@ -30,14 +27,11 @@ public class MapStructMapperImpl implements MapStructMapper {
         if (user == null) {
             return null;
         }
-
         UserDto userDto = new UserDto();
-
         userDto.setUserId(user.getUserId());
         userDto.setFullName(user.getFullName());
         userDto.setPassword(user.getPassword());
         userDto.setNotificationToken(user.getNotificationToken());
-
         return userDto;
     }
 }
