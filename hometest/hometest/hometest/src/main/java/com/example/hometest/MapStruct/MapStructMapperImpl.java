@@ -1,4 +1,4 @@
-package com.example.hometest;
+package com.example.hometest.MapStruct;
 
 import org.springframework.stereotype.Component;
 import jakarta.annotation.Generated;

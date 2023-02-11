@@ -3,7 +3,8 @@ package com.example.hometest.Account;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import com.example.hometest.ResourceNotFoundException;
+
+import com.example.hometest.Module.ResourceNotFoundException;
 
 @Service
 public class AccountServiceImpl implements AccountService {

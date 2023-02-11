@@ -1,4 +1,4 @@
-package com.example.hometest;
+package com.example.hometest.MapStruct;
 
 import org.mapstruct.Mapper;
 import com.example.hometest.Account.Account;
