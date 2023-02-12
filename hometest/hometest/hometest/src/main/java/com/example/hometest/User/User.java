@@ -59,12 +59,11 @@ public class User {
         if (!(object instanceof User))
             return false;
         User user = (User) object;
-        return Objects.equals(this.UserId, user.UserId)
-                || Objects.equals(this.NotificationToken, user.NotificationToken);
+        return Objects.equals(this.UserId, user.UserId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.UserId, this.NotificationToken);
+        return Objects.hash(this.UserId);
     }
 }

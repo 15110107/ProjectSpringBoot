@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Account {
-    private @Id @GeneratedValue long UserId;
-    private int AccountNumber;
+    private long UserId;
+    private @Id @GeneratedValue int AccountNumber;
     private double Balance;
 
     public Account(long UserId, int AccountNumber, double Balance) {
@@ -49,11 +49,11 @@ public class Account {
         if (!(object instanceof Account))
             return false;
         Account account = (Account) object;
-        return Objects.equals(this.UserId, account.UserId);
+        return Objects.equals(this.AccountNumber, account.AccountNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.UserId);
+        return Objects.hash(this.AccountNumber);
     }
 }

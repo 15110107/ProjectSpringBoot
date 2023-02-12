@@ -5,9 +5,9 @@ import java.util.List;
 public interface AccountService {
     Account saveAccount(Account Account);
 
-    List<Account> getAllAccounts();
+    List<Account> getAllAccounts(Iterable<Long> UserId);
 
-    Account getAccountByUserId(long UserId);
+    Account getAccountByNumber(Iterable<Long> UserId, int AccountNumber);
 
     Account updateAccount(Account Account, long UserId);
 

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.hometest.Account.*;
 
 @RestController
-@RequestMapping("/Account")
+@RequestMapping("/User/{id}/Account")
 public class AccountController {
     @Autowired
     private ModelMapper modelMapper;
@@ -32,7 +32,7 @@ public class AccountController {
     }
 
     @GetMapping
-    public List<Account> getAllAccounts() {
+    public List<Account> getAllAccounts(@PathVariable(name = "userid") Long userid) {
         return accountServiceImpl.getAllAccounts()
                 .stream()
                 .map(post -> modelMapper.map(post, Account.class))

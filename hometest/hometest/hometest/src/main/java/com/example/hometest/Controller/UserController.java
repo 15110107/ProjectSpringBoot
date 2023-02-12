@@ -39,8 +39,8 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUserByUserId(@PathVariable(name = "id") Long id) {
+    @GetMapping("/{number}")
+    public ResponseEntity<UserDto> getUserByUserId(@PathVariable(name = "number") Long id) {
         User user = userServiceImpl.getUserByUserId(id);
         // convert entity to DTO
         UserDto userResponse = modelMapper.map(user, UserDto.class);

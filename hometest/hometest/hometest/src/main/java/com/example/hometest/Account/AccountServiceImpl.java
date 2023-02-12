@@ -15,9 +15,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> getAllAccounts() {
+    public List<Account> getAllAccounts(Iterable<Long> UserId) {
         try {
-            return accountRepository.findAll();
+            return accountRepository.findAllById(UserId);
         } catch (Exception e) {
             new ResourceErrorException("Exception", "Error", e);
             return null;
@@ -25,10 +25,18 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account getAccountByUserId(long UserId) {
+    public Account getAccountByNumber(Iterable<Long> UserId, int AccountNumber) {
         try {
-            return accountRepository.findById(UserId).orElseThrow(
-                    () -> new ResourceNotFoundException("Account", "UserId", UserId));
+            List<Account> ListAccount = accountRepository.findAllById(UserId);
+            for (Account account : ListAccount) {
+                if (account.getAccountNumber() = AccountNumber) {
+
+                }
+            }
+            // return
+            // ListAccount.stream().filter(Account.class::isInstance).map(Account::AccountNumber)
+            // .orElseThrow(
+            // () -> new ResourceNotFoundException("Account", "UserId", UserId));
         } catch (Exception e) {
             new ResourceErrorException("Exception", "Error", e);
             return null;
