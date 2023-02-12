@@ -28,9 +28,9 @@ public class AccountServiceImpl implements AccountService {
     public Account getAccountByNumber(Iterable<Long> UserId, int AccountNumber) {
         try {
             List<Account> ListAccount = accountRepository.findAllById(UserId);
-            for (Account account : ListAccount) {
-                if (account.getAccountNumber() = AccountNumber) {
-
+            for (Account accountNumber : ListAccount) {
+                if (accountNumber = AccountNumber) {
+                    return account;
                 }
             }
             // return
