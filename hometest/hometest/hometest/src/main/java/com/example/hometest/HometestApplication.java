@@ -7,8 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = { "com.example.hometest.Module" })
 @ComponentScan(basePackages = { "com.example.hometest.Account" })
 @ComponentScan(basePackages = { "com.example.hometest.User" })
+@ComponentScan(basePackages = { "com.example.hometest.MapStruct" })
+@ComponentScan(basePackages = { "com.example.hometest.Controller" })
 
 public class HometestApplication {
 	@Bean
